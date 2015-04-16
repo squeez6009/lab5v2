@@ -32,27 +32,41 @@ struct Node* insert_end(struct Node* root, struct Data data) {
 	
 	struct Node* temp = root;
 	while (temp->next != NULL){
-	
+	int count = 0;
 		temp = temp->next;
+		count ++;
+		printf("\n Count = %d\n", count);
 	}
 	temp->next = new_node;
 	
 }
 struct Node* insert_middle(struct Node* root, struct Data data) {
 	struct Node *new_node = malloc(sizeof(struct Node));
+	int middle;
+	int count = 1;
 	
 	memcpy ( &((*new_node).data), &data, sizeof(struct Data));
 	new_node->next = NULL;
 	
 	if (root == NULL){
 		return new_node;
-	}
+	}		
+	struct Node* temp = root;	
 	
-	struct Node* temp = root;
+	middle = 3; //find_middle(temp);
+	
+	printf("\n#######Middle is: %d\n", middle);
+	
 	while (temp->next != NULL){
-	
+	  count ++;
+	  if (middle == count)
+	  break;
 		temp = temp->next;
 	}
+	if (temp == NULL){
+	printf("/nERROR: Node was NULL");
+	}
+	new_node->next = temp->next;
 	temp->next = new_node;
 	
 }
@@ -88,7 +102,7 @@ struct Data* get_data() {
 	return data;
 }
 
-int find_middle(struct Data* data){
+int find_middle(struct Node* root){
   
   struct Node* temp = root;
   int count = 0;
