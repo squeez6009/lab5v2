@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "lib.h"
+//INSERT FRONT
 
 struct Node* insert_front(struct Node* root, struct Data data) {
 	struct Node *new_node = malloc(sizeof(struct Node));
@@ -20,6 +21,8 @@ struct Node* insert_front(struct Node* root, struct Data data) {
 	return new_node;
 }
 
+//INSERT END
+
 struct Node* insert_end(struct Node* root, struct Data data) {
 	struct Node *new_node = malloc(sizeof(struct Node));
 	
@@ -31,19 +34,21 @@ struct Node* insert_end(struct Node* root, struct Data data) {
 	}
 	
 	struct Node* temp = root;
-	while (temp->next != NULL){
-	int count = 0;
+	while (temp->next != NULL){	
 		temp = temp->next;
-		count ++;
-		printf("\n Count = %d\n", count);
 	}
 	temp->next = new_node;
 	
 }
+//INSERT MIDDLE
+
 struct Node* insert_middle(struct Node* root, struct Data data) {
 	struct Node *new_node = malloc(sizeof(struct Node));
+	
 	int middle;
-	int count = 1;
+	int count = 0;
+	int list_size;
+	
 	
 	memcpy ( &((*new_node).data), &data, sizeof(struct Data));
 	new_node->next = NULL;
@@ -52,26 +57,29 @@ struct Node* insert_middle(struct Node* root, struct Data data) {
 		return new_node;
 	}		
 	struct Node* temp = root;	
+	struct Node* trail = temp;
+	list_size = size(temp);
+	middle = list_size / 2;	
 	
-	middle = 3; //find_middle(temp);
-	
-	printf("\n#######Middle is: %d\n", middle);
+	//printf("\n#######Middle is: %d\n", middle);
 	
 	while (temp->next != NULL){
 	  count ++;
 	  if (middle == count)
 	  break;
 		temp = temp->next;
+		trail = temp;
 	}
 	if (temp == NULL){
 	printf("/nERROR: Node was NULL");
 	}
-	new_node->next = temp->next;
-	temp->next = new_node;
+	new_node->next = temp;
+	trail->next = new_node;
 	
 }
 
 
+//INSERT FRONT 2
 
 struct Node* insert_front_2(struct Node* root, char* name, int age) {
 	struct Node *new_node = malloc(sizeof(struct Node));
@@ -92,6 +100,7 @@ struct Node* insert_front_2(struct Node* root, char* name, int age) {
 
 }
 
+// GET DATA
 
 struct Data* get_data() {
 	struct Data *data = malloc(sizeof(struct Data));
@@ -102,22 +111,25 @@ struct Data* get_data() {
 	return data;
 }
 
-int find_middle(struct Node* root){
+
+// LIST SIZE (used for counting length of linked list and for finding middle)
+
+int size(struct Node* root){
   
-  struct Node* temp = root;
+  //struct Node* temp = root;
   int count = 0;
   
-	while (temp->next != NULL){
-	
-		temp = temp->next;
-    count ++;
+	while (root != NULL){
+	  count ++;
+		root = root->next;    
 }
-count = count/2;
+
 return count;
 
 }
 
 
+// PRINT DATA
 
 void print_data(struct Data* data){
 	if(data==NULL){

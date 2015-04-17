@@ -21,7 +21,7 @@ struct Node* insert_front_2(struct Node* root, char* name, int age);
 
 /* Input/Output */
 struct Data* get_data();
-int find_middle(struct Node* root);
+int size(struct Node* root);
 void print_data(struct Data* data);
 void print_node(struct Node* node);
 void print_linked_list(struct Node* root);
