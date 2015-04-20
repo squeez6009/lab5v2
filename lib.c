@@ -21,6 +21,19 @@ struct Node* insert_front(struct Node* root, struct Data data) {
 	return new_node;
 }
 
+//REMOVE FRONT
+
+  struct Node* remove_front(struct Node* root) {
+  struct Node* temp = root;
+	struct Node* del;	
+	del=temp->next;
+	temp->next = del->next;
+	free (del);
+	return root;
+	}
+
+
+
 //INSERT END
 
 struct Node* insert_end(struct Node* root, struct Data data) {
@@ -41,7 +54,25 @@ struct Node* insert_end(struct Node* root, struct Data data) {
 	
 }
 
+//REMOVE END
 
+struct Node* remove_end(struct Node* root, struct Data data) {
+	struct Node *new_node = malloc(sizeof(struct Node));
+	
+	memcpy ( &((*new_node).data), &data, sizeof(struct Data));
+	new_node->next = NULL;
+	
+	if (root == NULL){
+		return new_node;
+	}
+	
+	struct Node* temp = root;
+	while (temp->next != NULL){	
+		temp = temp->next;
+	}
+	temp->next = new_node;
+	
+}
 
 //INSERT MIDDLE  
 //help :  https://www.youtube.com/watch?v=tta6BIiIIFI
