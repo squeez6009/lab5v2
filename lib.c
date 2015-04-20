@@ -40,14 +40,17 @@ struct Node* insert_end(struct Node* root, struct Data data) {
 	temp->next = new_node;
 	
 }
+
+
+
 //INSERT MIDDLE  
 //help :  https://www.youtube.com/watch?v=tta6BIiIIFI
 
-struct Node* insert_middle(struct Node* root, struct Data data) {
+  struct Node* insert_middle(struct Node* root, struct Data data) {
 	struct Node *new_node = malloc(sizeof(struct Node));
 	
-	int middle;
-	int count = 0;
+	int middle = 0;
+	int count = 1;
 	int list_size;
 	
 	
@@ -58,24 +61,24 @@ struct Node* insert_middle(struct Node* root, struct Data data) {
 		return new_node;
 	}		
 	struct Node* temp = root;	
-	struct Node* trail = temp;
+	
 	list_size = size(temp);
 	middle = list_size / 2;	
 	
-	//printf("\n#######Middle is: %d\n", middle);
-	
-	while (temp->next != NULL){
+		while (temp->next != NULL){
 	  count ++;
-	  if (middle == count)
+	  
+	  if (middle == count)	 
 	  break;
+	  
 		temp = temp->next;
-		trail = temp;
+		
 	}
 	if (temp == NULL){
 	printf("/nERROR: Node was NULL");
 	}
-	new_node->next = temp;
-	trail->next = new_node;
+	new_node->next = temp->next;
+	temp->next = new_node;
 	
 }
 
