@@ -67,7 +67,7 @@ int writeMenu(int *choice)
 int loopMenu()
 {
     int list_size;
-	struct Node* root = NULL;
+	struct Node* root;
 	struct Data* new_data;
 	
 	/* A value to hold the menu item chosen */
@@ -82,7 +82,7 @@ int loopMenu()
 	    // Insert node in front of list.
 
         case 1:
-            printf("Insert node in front of list. ");
+            printf("Insert node in front of list:\n");
             clean_stdin();
             new_data = get_data();
 	          print_data(new_data);	
@@ -94,7 +94,7 @@ int loopMenu()
             break;
         // Insert node in middle of list.
         case 2:
-            printf("Insert in middle of list: ");
+            printf("Insert in middle of list: \n");
             clean_stdin();
             new_data = get_data();
             print_data(new_data);	
@@ -106,7 +106,7 @@ int loopMenu()
             break;
         // Insert node at end of list.
         case 3:
-            printf("Insert in end of list: ");
+            printf("Insert in end of list: \n");
             clean_stdin();
             new_data = get_data();
             print_data(new_data);	
@@ -118,14 +118,14 @@ int loopMenu()
             break;
         // Delete first node of list.
         case 4:
-            printf("Delete first node: ");
+            printf("Delete first node: \n");
             clean_stdin();
             root = remove_front(root);
             printf("Press enter to continue.\n");
             break;
         // Delete middle node of list.
         case 5:
-            printf("Delete middle node: ");
+            printf("Delete middle node: \n");
             clean_stdin();
             
             printf("Press enter to continue.\n");
@@ -133,7 +133,7 @@ int loopMenu()
         // Delete node at end of list.
         case 6:
             clean_stdin();
-            printf("\n\n\nDelete node from end of list: ");
+            printf("\n\n\nDelete node from end of list: \n");
             
             printf("\nPress enter to continue.\n");
             break;
@@ -147,7 +147,7 @@ int loopMenu()
         case 8:
         
             clean_stdin();
-            printf("\n\nPrint out linked list: ");
+            printf("\n\nPrint out linked list: \n");
             list_size = size(root);
             printf("\nList is %d long.\n", list_size);
 
