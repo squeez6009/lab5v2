@@ -60,16 +60,15 @@ struct Node* remove_end(struct Node* root) {
 		
 	struct Node* temp = root;
 	struct Node* prev;
-	struct Node* del;
 	
-	while (temp->next->next != NULL){	
+	
+	while (temp->next != NULL){	
+		prev=temp;
 		temp = temp->next;
 		
 	}
-	prev=temp;
-	del = prev->next;
-	del->next = NULL;
-	free (del);
+	free (prev->next);
+	prev->next = NULL;	
 	
 	return root;
 	
