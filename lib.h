@@ -13,6 +13,12 @@ struct Node{
 	struct Node *next;
 };
 
+/* Menu Functions */
+
+int writeMenu(int *choice);
+int clean_stdin();
+int loopMenu();
+
 /* Linked List Functions */
 struct Node* insert_front(struct Node* root, struct Data data);
 struct Node* insert_end(struct Node* root, struct Data data);
