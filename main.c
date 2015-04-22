@@ -108,9 +108,11 @@ int loopMenu()
         case 3:
             printf("Insert in end of list: \n");
             clean_stdin();
+            
             new_data = get_data();
             print_data(new_data);	
 	          root = insert_end(root, *new_data);
+	          
 	          list_size = size(root);
             printf("\nList is %d long.\n", list_size);
 
@@ -120,9 +122,15 @@ int loopMenu()
         case 4:
             printf("Delete first node: \n");
             clean_stdin();
+            
             root = remove_front(root);
-            printf("Press enter to continue.\n");
+            list_size = size(root);
+            printf("\nList is %d long.\n", list_size);
+
+	          print_linked_list(root);
+            printf("Press enter to continue.\n");            
             break;
+            
         // Delete middle node of list.
         case 5:
             printf("Delete middle node: \n");
@@ -131,10 +139,17 @@ int loopMenu()
             printf("Press enter to continue.\n");
             break;
         // Delete node at end of list.
-        case 6:
-            clean_stdin();
+        case 6:            
             printf("\n\n\nDelete node from end of list: \n");
+            clean_stdin();
+            printf("");
+            root = remove_end(root);
             
+            list_size = size(root);
+            printf("\nList is %d long.\n", list_size);
+
+	          print_linked_list(root);
+	          
             printf("\nPress enter to continue.\n");
             break;
         // Traverse list

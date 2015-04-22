@@ -23,14 +23,14 @@ struct Node* insert_front(struct Node* root, struct Data data) {
 
 //REMOVE FRONT
 
-  struct Node* remove_front(struct Node* root) {
+struct Node* remove_front(struct Node* root) {
   struct Node* temp = root;
-	struct Node* del;	
-	del=temp->next;
-	temp->next = del->next;
-	free (del);
+	
+	root=temp->next;
+	
+	free (temp);
 	return root;
-	}
+}
 
 
 
@@ -51,26 +51,27 @@ struct Node* insert_end(struct Node* root, struct Data data) {
 		temp = temp->next;
 	}
 	temp->next = new_node;
-	
+	return root;
 }
 
 //REMOVE END
 
-struct Node* remove_end(struct Node* root, struct Data data) {
-	struct Node *new_node = malloc(sizeof(struct Node));
-	
-	memcpy ( &((*new_node).data), &data, sizeof(struct Data));
-	new_node->next = NULL;
-	
-	if (root == NULL){
-		return new_node;
-	}
-	
+struct Node* remove_end(struct Node* root) {
+		
 	struct Node* temp = root;
-	while (temp->next != NULL){	
+	struct Node* prev;
+	struct Node* del;
+	
+	while (temp->next->next != NULL){	
 		temp = temp->next;
+		
 	}
-	temp->next = new_node;
+	prev=temp;
+	del = prev->next;
+	del->next = NULL;
+	free (del);
+	
+	return root;
 	
 }
 
@@ -81,7 +82,7 @@ struct Node* remove_end(struct Node* root, struct Data data) {
 	struct Node *new_node = malloc(sizeof(struct Node));
 	
 	int middle = 0;
-	int count = 1;
+	int count = 0;
 	int list_size;
 	
 	
@@ -111,7 +112,43 @@ struct Node* remove_end(struct Node* root, struct Data data) {
 	new_node->next = temp->next;
 	temp->next = new_node;
 	
+	return root;
+	
 }
+//REMOVE MIDDLE  
+
+
+  /*struct Node* insert_middle(struct Node* root) {
+	
+	
+	int middle = 0;
+	int count = 0;
+	int list_size;
+	
+		
+	struct Node* temp = root;	
+	
+	list_size = size(temp);
+	middle = list_size / 2;	
+	
+		while (temp->next != NULL){
+	  count ++;
+	  
+	  if (middle == count)	 
+	  break;
+	  
+		temp = temp->next;
+		
+	}
+	if (temp == NULL){
+	printf("/nERROR: Node was NULL");
+	}
+	new_node->next = temp->next;
+	temp->next = new_node;
+	
+	return root;
+	
+}*/
 
 
 //INSERT FRONT 2
