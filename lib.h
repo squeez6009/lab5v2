@@ -25,6 +25,9 @@ struct Node* insert_end(struct Node* root, struct Data data);
 struct Node* insert_middle(struct Node* root, struct Data data);
 struct Node* insert_front_2(struct Node* root, char* name, int age);
 struct Node* remove_front(struct Node* root);
+struct Node* remove_end(struct Node* root);
+struct Node* remove_middle(struct Node* root);
+struct Node* look_up_by_index(struct Node* root);
 
 /* Input/Output */
 struct Data* get_data();

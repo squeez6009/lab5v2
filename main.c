@@ -18,8 +18,8 @@ int writeMenu(int *choice)
 	printf("\n3. Insert node at end of list.\n4. Delete first node of list.");
 	printf("\n5. Delete middle node of list.\n6. Delete node at end of list.");
 	printf("\n7. Traverse list.\n8. Print List\n");
-	printf("\n9. Exit Program\n");
-	printf("Please make a choice [1-9]: ");
+	printf("\n9. Look up by index.\n10. Exit Program\n");
+	printf("Please make a choice [1-10]: ");
 	scanf("%d", choice);
 
 	/* Validation */
@@ -49,8 +49,11 @@ int writeMenu(int *choice)
         case 8:
 			return 8;  // Return 8, the menu option selected
 			break;
-			case 9:
+			  case 9:
 			return 9;  // Return 9, the menu option selected
+			break;
+			case 10:
+			return 10;  // Return 10, the menu option selected
 			break;
 		default:
 			printf("\n\nThat choice was invalid.  Please choose a valid menu item, values 1 throuh 8 are acceptable.\n\n");
@@ -135,7 +138,12 @@ int loopMenu()
         case 5:
             printf("Delete middle node: \n");
             clean_stdin();
+            root = remove_middle(root);
             
+            list_size = size(root);
+            printf("\nList is %d long.\n", list_size);
+
+	          print_linked_list(root);
             printf("Press enter to continue.\n");
             break;
         // Delete node at end of list.
@@ -169,8 +177,17 @@ int loopMenu()
 	          print_linked_list(root);
             printf("\nPress enter to continue.\n");
             break;
-        // Exit the program
+        // Look up by Index
         case 9:
+            root = look_up_by_index(root);
+            
+            
+            print_node(root);
+	          
+            printf("\nPress enter to continue.\n");
+            break;
+        // Exit the program
+        case 10:
             printf("\nClosing program!\n");
             exit(0);
             break;

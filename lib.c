@@ -16,7 +16,7 @@ struct Node* insert_front(struct Node* root, struct Data data) {
 	}
 	
 	
-	new_node->next = root;
+  new_node->next = root;
 	
 	return new_node;
 }
@@ -64,8 +64,7 @@ struct Node* remove_end(struct Node* root) {
 	
 	while (temp->next != NULL){	
 		prev=temp;
-		temp = temp->next;
-		
+		temp = temp->next;		
 	}
 	free (prev->next);
 	prev->next = NULL;	
@@ -77,7 +76,7 @@ struct Node* remove_end(struct Node* root) {
 //INSERT MIDDLE  
 //help :  https://www.youtube.com/watch?v=tta6BIiIIFI
 
-  struct Node* insert_middle(struct Node* root, struct Data data) {
+struct Node* insert_middle(struct Node* root, struct Data data) {
 	struct Node *new_node = malloc(sizeof(struct Node));
 	
 	int middle = 0;
@@ -96,18 +95,18 @@ struct Node* remove_end(struct Node* root) {
 	list_size = size(temp);
 	middle = list_size / 2;	
 	
-		while (temp->next != NULL){
+	while (temp->next != NULL){
 	  count ++;
 	  
-	  if (middle == count)	 
+  if (middle == count)	 
 	  break;
 	  
 		temp = temp->next;
 		
 	}
 	if (temp == NULL){
-	printf("/nERROR: Node was NULL");
-	}
+	  printf("/nERROR: Node was NULL");
+	  }
 	new_node->next = temp->next;
 	temp->next = new_node;
 	
@@ -117,7 +116,7 @@ struct Node* remove_end(struct Node* root) {
 //REMOVE MIDDLE  
 
 
-  /*struct Node* insert_middle(struct Node* root) {
+struct Node* remove_middle(struct Node* root) {
 	
 	
 	int middle = 0;
@@ -126,28 +125,64 @@ struct Node* remove_end(struct Node* root) {
 	
 		
 	struct Node* temp = root;	
+	struct Node* prev;
 	
 	list_size = size(temp);
 	middle = list_size / 2;	
 	
-		while (temp->next != NULL){
-	  count ++;
+	while (temp->next != NULL){
+    count ++;
 	  
-	  if (middle == count)	 
-	  break;
+  if (middle == count)	 
+    break;
 	  
 		temp = temp->next;
+		prev=temp;
 		
-	}
-	if (temp == NULL){
-	printf("/nERROR: Node was NULL");
-	}
-	new_node->next = temp->next;
-	temp->next = new_node;
+	  }
+  if (temp == NULL){
+    printf("/nERROR: Node was NULL");
+	  }
+	  prev=temp->next;
+	  *temp = *prev;
+	  free (prev);
+	
 	
 	return root;
 	
-}*/
+}
+
+
+//TRAVERSE LIST
+
+//LOOK UP BY INDEX
+struct Node* look_up_by_index(struct Node* root) {
+  struct Node* temp = root;	
+  
+  int i;
+  int list_size = size(temp);
+  //int count = 1;
+  int index;
+  printf("\nWhich index do you want to look up? ");
+  scanf(" %d", &index);
+  if(index <= 0 || index > list_size){
+        printf("ERROR: Node does not exist!\n");
+       return -1;
+       }
+  //while (temp != NULL)
+    //{
+     //  if (count == choice)
+     //     break;
+          
+      // count++;
+  for (i=1; i<=index; i++){
+       temp = temp->next;
+       
+    }
+    return temp;
+
+
+}
 
 
 //INSERT FRONT 2
