@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "lib.h"
+
 //INSERT FRONT
 
 struct Node* insert_front(struct Node* root, struct Data data) {
@@ -15,7 +15,6 @@ struct Node* insert_front(struct Node* root, struct Data data) {
 		return new_node;
 	}
 	
-	
 	new_node->next = root;
 	
 	return new_node;
@@ -27,7 +26,7 @@ struct Node* insert_front(struct Node* root, struct Data data) {
   struct Node* temp = root;
 	struct Node* del;	
 	del=temp->next;
-	temp->next = del->next;
+  temp = (temp->next)->next;
 	free (del);
 	return root;
 	}

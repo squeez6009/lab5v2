@@ -11,9 +11,9 @@ int main() {
 	print_data(new_data);	
 	root = insert_front(root, *new_data);
 
-	new_data = get_data();
-	print_data(new_data);	
-	root = insert_end(root, *new_data);
+	//new_data = get_data();
+	//print_data(new_data);	
+	//root = insert_end(root, *new_data);
 	
 	new_data = get_data();
 	print_data(new_data);	
